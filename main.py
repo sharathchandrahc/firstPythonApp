@@ -1,3 +1,4 @@
+import os
 from flask import Flask, jsonify, request
 from flask_sqlalchemy import SQLAlchemy
 from flask_cors import CORS
@@ -56,5 +57,7 @@ def get_users():
 
 # Run the application
 if __name__ == '__main__':
-    app.run(debug=True)
+    # Use environment variable for debug mode, default to False for production safety
+    debug_mode = os.getenv('FLASK_DEBUG', 'False').lower() in ['true', '1', 'yes']
+    app.run(debug=debug_mode)
 
