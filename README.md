@@ -25,8 +25,10 @@ source venv/bin/activate   # On Windows use `venv\Scripts\activate`
 
 ### 3. Install Dependencies
 ```bash
-pip install Flask SQLAlchemy Flask-CORS Flask-Migrate
+pip install -r requirements.txt
 ```
+
+**Note**: A `requirements.txt` file has been added to ensure consistent dependency versions and security updates.
 
 ### 4. Initialize SQLite Database
 - By default, the Flask application is configured to use SQLite. Ensure SQLite is installed on your system.
@@ -113,10 +115,23 @@ python main.py
   - **Create User**: Send a POST request to `http://localhost:5000/api/users` with JSON data like `{"username": "newuser", "email": "newuser@example.com"}`.
   - **Get All Users**: Send a GET request to `http://localhost:5000/api/users` to retrieve all users.
 
+## Security Updates
+
+### CVE-2024-56326 Remediation
+This project has been updated to address **CVE-2024-56326**, a Template Injection vulnerability in Jinja2:
+
+- **Issue**: Jinja2 versions prior to 3.1.5 contained a sandbox bypass vulnerability allowing arbitrary Python code execution
+- **CVSS Score**: 7.8 (High severity)
+- **Fix Applied**: Upgraded Jinja2 from 3.1.4 to 3.1.5
+- **Date Fixed**: December 2024
+
+The vulnerability affected the Jinja2 templating engine used by Flask. The fix ensures that indirect references to the `str.format` method are properly handled by the sandbox environment.
+
 ### Additional Notes
 - Make sure to replace `<repository-url>` and `<repository-directory>` with your actual repository URL and directory name.
 - Modify the `User` model and API endpoints in `main.py` as per your application requirements.
 - Ensure you have SQLite installed for the provided configuration (`'sqlite:///data.db'`). Modify `SQLALCHEMY_DATABASE_URI` as needed for other database systems.
+- Always install dependencies from `requirements.txt` to maintain security patches and version consistency.
 ```
 
 This format allows you to copy and paste directly into a code editor or README file, ensuring clarity and ease of understanding for setting up your Flask application with SQLAlchemy and Flask-CORS. Adjust any paths, URLs, or configurations according to your specific project requirements.
