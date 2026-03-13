@@ -25,8 +25,10 @@ source venv/bin/activate   # On Windows use `venv\Scripts\activate`
 
 ### 3. Install Dependencies
 ```bash
-pip install Flask SQLAlchemy Flask-CORS Flask-Migrate
+pip install -r requirements.txt
 ```
+
+**Note**: The requirements.txt file includes security patches for CVE-2024-49767 (Werkzeug vulnerability).
 
 ### 4. Initialize SQLite Database
 - By default, the Flask application is configured to use SQLite. Ensure SQLite is installed on your system.
