@@ -1,4 +1,4 @@
-# firstPythonApp
+# firstPythonApp - 1
 
 I understand! Here's a structured document including all the steps and code blocks formatted for a code editor:
 
