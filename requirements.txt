@@ -1,0 +1,21 @@
+# Python dependencies for Flask application
+# Fixed CVE-2024-49767 by pinning Werkzeug to patched version
+
+Flask==3.0.3
+Flask-CORS==4.0.1
+Flask-Migrate==4.0.7
+Flask-SQLAlchemy==3.1.1
+
+# Security fix: CVE-2024-49767 - Werkzeug resource exhaustion vulnerability
+# Ensure Werkzeug is upgraded to 3.0.6+ to patch multipart form parsing issue
+Werkzeug>=3.0.6
+
+# Core dependencies (automatically managed by pip)
+Jinja2>=3.1.2
+itsdangerous>=2.1.2
+click>=8.1.3
+blinker>=1.6.2
+SQLAlchemy>=2.0.0
+Mako>=1.3.0
+alembic>=1.13.0
+MarkupSafe>=2.1.0
